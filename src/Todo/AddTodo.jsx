@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import Context from "../context";
 
-function useInputValue(defaultValue = '') {
-    const [value, setValue] = useState(defaultValue);
-
+function useInputValue(state, dispatch) {
     return {
         bind: {
-            value,
-            onChange: e => setValue(e.target.value)
+            value: state.inputValue,
+            onChange: e => dispatch({ type: 'SET_INPUT_VALUE', payload: e.target.value })
+
         },
-        clear: () => setValue(''),
-        value: () => value
+        clear: () => dispatch({ type: 'SET_INPUT_VALUE', payload: '' }),
+        value: () => state.inputValue
     }
 }
 
-function AddTodo({ onCreate }) {
-    const input = useInputValue('');
+function AddTodo() {
+    const { state, dispatch } = useContext(Context);
+    const input = useInputValue(state, dispatch);
 
     function submitHandler(e) {
         e.preventDefault();
 
         if (input.value().trim()) {
-            onCreate(input.value());
+            dispatch({
+                type: 'ADD_TODO',
+                payload: input.value()
+            });
 
             input.clear()
         }

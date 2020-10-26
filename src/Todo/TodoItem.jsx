@@ -17,8 +17,8 @@ const styles = {
         marginRight: '10px'
     }
 }
-function TodoItem({ todo, index, itemOnChange }) {
-    const { removeTodo } = useContext(Context);
+function TodoItem({ todo, index }) {
+    const { dispatch } = useContext(Context);
     const classes = [];
 
     if (todo.completed) {
@@ -28,11 +28,11 @@ function TodoItem({ todo, index, itemOnChange }) {
     return (
         <li style={styles.li}>
             <span className={classes.join(' ')}>
-                <input type='checkbox' style={styles.input} checked={todo.completed} onChange={() => itemOnChange(todo.id)} />
+                <input type='checkbox' style={styles.input} checked={todo.completed} onChange={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id })} />
                 <strong>{index + 1}</strong>
                 {todo.title}
             </span>
-            <button className='remove-btn' onClick={() => removeTodo(todo.id)}>&times;</button>
+            <button className='remove-btn' onClick={() => dispatch({ type: 'REMOVE_TODO', payload: todo.id })} >&times;</button>
         </li>
     )
 }
