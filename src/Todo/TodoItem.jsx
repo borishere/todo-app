@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types'
 import Context from '../context'
+import { useHistory } from 'react-router-dom';
 
 const styles = {
     li: {
@@ -21,18 +22,42 @@ function TodoItem({ todo, index }) {
     const { dispatch } = useContext(Context);
     const classes = [];
 
+    let history = useHistory();
+
     if (todo.completed) {
         classes.push('done');
     }
 
+    function itemClickHandler(e) {
+        if (e.target.className === 'todo-item') {
+            history.push('/' + todo.id);
+        }
+    }
+
+    function inputChangeHandler() {
+        dispatch({ type: 'TOGGLE_TODO', payload: todo.id })
+    }
+
     return (
-        <li style={styles.li}>
+        <li
+            style={styles.li}
+            className='todo-item'
+            onClick={(e) => itemClickHandler(e)}
+        >
             <span className={classes.join(' ')}>
-                <input type='checkbox' style={styles.input} checked={todo.completed} onChange={() => dispatch({ type: 'TOGGLE_TODO', payload: todo.id })} />
+                <input type='checkbox'
+                    style={styles.input}
+                    checked={todo.completed}
+                    onChange={inputChangeHandler}
+                />
                 <strong>{index + 1}</strong>
                 {todo.title}
             </span>
-            <button className='remove-btn' onClick={() => dispatch({ type: 'REMOVE_TODO', payload: todo.id })} >&times;</button>
+            <button
+                className='remove-btn'
+                onClick={() => dispatch({ type: 'REMOVE_TODO', payload: todo.id })}>
+                &times;
+            </button>
         </li>
     )
 }

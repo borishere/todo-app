@@ -1,12 +1,20 @@
 body {
-  background-color: rgb(121, 117, 103);
+  background-color: hsl(204, 33%, 25%);
+  color: hsla(0, 0%, 91%);
+  font-size: 22px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .wrapper {
   width: 700px;
   margin: 0 auto;
   padding: 50px;
-  text-align: center;
 }
 
 .remove-btn {
@@ -17,6 +25,39 @@ body {
 
 .done {
   text-decoration: line-through;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar li:not(:first-child) {
+  margin-left: 30px;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link.active {
+  color: rgb(40, 221, 109);
+}
+
+.add-todo-input {
+  width: 500px;
+  height: 20px;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.add-todo-btn {
+  height: 44px;
+  padding: 0 10px;
+  font-size: 20px;
+  margin-left: 10px;
 }
 
 @keyframes ldio-enyzatthhyk {

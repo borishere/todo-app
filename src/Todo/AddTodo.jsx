@@ -32,8 +32,17 @@ function AddTodo() {
 
     return (
         <form onSubmit={submitHandler}>
-            <input type="text" {...input.bind} />
-            <button type="submit">Add todo</button>
+            <input
+                type="text"
+                className='add-todo-input'
+                {...input.bind}
+            />
+            <button
+                type="submit"
+                className='add-todo-btn'
+            >
+                Add todo
+            </button>
         </form>
     )
 }
