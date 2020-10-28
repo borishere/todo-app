@@ -9,13 +9,20 @@ const styles = {
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: '10px',
-        padding: '10px',
+        padding: '20px',
         fontSize: '20px',
         border: '1px solid #ccc',
         borderRadius: '5px'
     },
+    span: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     input: {
-        marginRight: '10px'
+        width: '25px',
+        height: '25px',
+        margin: '0 10px 0 0'
     }
 }
 function TodoItem({ todo, index }) {
@@ -44,13 +51,13 @@ function TodoItem({ todo, index }) {
             className='todo-item'
             onClick={(e) => itemClickHandler(e)}
         >
-            <span className={classes.join(' ')}>
+            <span className={classes.join(' ')} style={styles.span}>
                 <input type='checkbox'
                     style={styles.input}
                     checked={todo.completed}
                     onChange={inputChangeHandler}
                 />
-                <strong>{index + 1}</strong>
+                <strong>{index + 1}.</strong>&nbsp;
                 {todo.title}
             </span>
             <button
