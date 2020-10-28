@@ -8,7 +8,8 @@ const Reducer = (state, action) => {
         case 'GET_TODOS':
             return {
                 ...state,
-                todos: action.payload
+                todos: action.payload,
+                filteredTodos: action.payload
             }
         case 'ADD_TODO':
             return {
@@ -24,7 +25,8 @@ const Reducer = (state, action) => {
         case 'REMOVE_TODO':
             return {
                 ...state,
-                todos: state.todos.filter(item => item.id !== action.payload)
+                todos: state.todos.filter(item => item.id !== action.payload),
+                filteredTodos: state.filteredTodos.filter(item => item.id !== action.payload)
             }
         case 'TOGGLE_TODO':
             return {
@@ -42,10 +44,20 @@ const Reducer = (state, action) => {
                 ...state,
                 modalOpened: action.payload
             }
-        case 'SET_INPUT_VALUE':
+        case 'SET_NEWTODO_VALUE':
             return {
                 ...state,
-                inputValue: action.payload
+                addTodoValue: action.payload
+            }
+        case 'SET_FIND_VALUE':
+            return {
+                ...state,
+                findTodoValue: action.payload
+            }
+        case 'FIND_TODO':
+            return {
+                ...state,
+                filteredTodos: state.todos.filter(item => item.title.includes(state.findTodoValue))
             }
         default:
             break;

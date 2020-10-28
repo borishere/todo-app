@@ -4,12 +4,12 @@ import Context from "../context";
 function useInputValue(state, dispatch) {
     return {
         bind: {
-            value: state.inputValue,
-            onChange: e => dispatch({ type: 'SET_INPUT_VALUE', payload: e.target.value })
+            value: state.addTodoValue,
+            onChange: e => dispatch({ type: 'SET_NEWTODO_VALUE', payload: e.target.value })
 
         },
-        clear: () => dispatch({ type: 'SET_INPUT_VALUE', payload: '' }),
-        value: () => state.inputValue
+        clear: () => dispatch({ type: 'SET_NEWTODO_VALUE', payload: '' }),
+        value: () => state.addTodoValue
     }
 }
 
@@ -24,6 +24,15 @@ function AddTodo() {
             dispatch({
                 type: 'ADD_TODO',
                 payload: input.value()
+            });
+
+            dispatch({
+                type: 'SET_FIND_VALUE',
+                payload: ''
+            });
+
+            dispatch({
+                type: 'FIND_TODO'
             });
 
             input.clear()
@@ -41,7 +50,7 @@ function AddTodo() {
                 type="submit"
                 className='add-todo-btn'
             >
-                Add todo
+                Add task
             </button>
         </form>
     )

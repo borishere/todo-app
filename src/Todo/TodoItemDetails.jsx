@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-function TodoItemDetails() {
+function TodoItemDetails({ todos }) {
     let { id } = useParams();
+    let todo = todos.filter(item => item.id === +id)[0];
 
     return (
         <>
-            <h3>id: {id}</h3>
-            <p>Ut vel unde deserunt doloribus id qui. Enim quam ipsam soluta.</p>
+            <h2>Task id: {id}</h2>
+            <h3> {todo.title} </h3>
         </>
     )
 }

@@ -3,18 +3,21 @@ import TodoList from './Todo/TodoList';
 import Context from './context';
 import AddTodo from "./Todo/AddTodo";
 import Loader from "./Loader";
-import Modal from './Modal/Modal';
+// import Modal from './Modal/Modal';
 import Reducer from './Reducer';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import About from './About';
 import TodoItemDetails from './Todo/TodoItemDetails';
+import TodoFind from './Todo/TodoFind';
 
 function App() {
     const initialState = {
         todos: [],
+        filteredTodos: [],
         loading: true,
         modalOpened: false,
-        inputValue: ''
+        addTodoValue: '',
+        findTodoValue: ''
     }
     const [state, dispatch] = useReducer(Reducer, initialState);
 
@@ -49,14 +52,15 @@ function App() {
                     <Context.Provider value={{ state, dispatch }}>
                         <div className='wrapper'>
                             <h1>Todo app</h1>
-                            <Modal />
+                            {/* <Modal /> */}
+                            <TodoFind />
                             <AddTodo />
                             {
                                 state.loading && <Loader />
                             }
                             {
-                                state.todos.length ?
-                                    <TodoList todos={state.todos} />
+                                state.filteredTodos.length ?
+                                    <TodoList todos={state.filteredTodos} />
                                     :
                                     state.loading ? '' : <h3>No todos found!</h3>
                             }
@@ -67,7 +71,7 @@ function App() {
                     <About />
                 </Route>
                 <Route path='/:id'>
-                    <TodoItemDetails />
+                    <TodoItemDetails todos={state.filteredTodos} />
                 </Route>
             </Switch>
         </BrowserRouter>
