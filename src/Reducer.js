@@ -54,10 +54,29 @@ const Reducer = (state, action) => {
                 ...state,
                 findTodoValue: action.payload
             }
-        case 'FIND_TODO':
+        case 'SET_FILTER_VALUE':
             return {
                 ...state,
-                filteredTodos: state.todos.filter(item => item.title.includes(state.findTodoValue))
+                filterValue: action.payload
+            }
+        case 'FILTER_TODO':
+            return {
+                ...state,
+                filteredTodos: state.todos.filter(item => {
+                    if (state.filterValue === 'all') {
+                        return item.title.includes(state.findTodoValue);
+                    }
+
+                    if (state.filterValue === 'current') {
+                        return !item.completed && item.title.includes(state.findTodoValue)
+                    }
+
+                    if (state.filterValue === 'done') {
+                        return item.completed && item.title.includes(state.findTodoValue)
+                    }
+
+                    return item;
+                })
             }
         default:
             break;

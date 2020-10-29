@@ -60,6 +60,30 @@ body {
   margin-left: 10px;
 }
 
+.todo-filter-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.todo-filter-el {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-filter-el:not(:first-child) {
+  margin-left: 30px;
+}
+
+.todo-filter-el input {
+  width: 17px;
+  height: 17px;
+  margin-top: 10px;
+}
+
 @keyframes ldio-enyzatthhyk {
   0% { opacity: 1 }
   100% { opacity: 0 }

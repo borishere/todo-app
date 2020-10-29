@@ -9,6 +9,7 @@ import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import About from './About';
 import TodoItemDetails from './Todo/TodoItemDetails';
 import TodoFind from './Todo/TodoFind';
+import TodoFilter from './Todo/TodoFilter';
 
 function App() {
     const initialState = {
@@ -17,7 +18,9 @@ function App() {
         loading: true,
         modalOpened: false,
         addTodoValue: '',
-        findTodoValue: ''
+        findTodoValue: '',
+        filterValue: 'all'
+
     }
     const [state, dispatch] = useReducer(Reducer, initialState);
 
@@ -53,6 +56,7 @@ function App() {
                         <div className='wrapper'>
                             <h1>Todo app</h1>
                             {/* <Modal /> */}
+                            <TodoFilter />
                             <TodoFind />
                             <AddTodo />
                             {

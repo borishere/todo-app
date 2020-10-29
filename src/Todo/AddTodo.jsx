@@ -32,7 +32,12 @@ function AddTodo() {
             });
 
             dispatch({
-                type: 'FIND_TODO'
+                type: 'SET_FILTER_VALUE',
+                payload: 'all'
+            });
+
+            dispatch({
+                type: 'FILTER_TODO'
             });
 
             input.clear()

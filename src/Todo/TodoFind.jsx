@@ -18,7 +18,7 @@ function TodoFind() {
             payload: e.target.value
         });
         dispatch({
-            type: 'FIND_TODO'
+            type: 'FILTER_TODO'
         });
     }
 
