@@ -1,15 +1,8 @@
 import React, { useContext } from 'react';
+import { Form } from 'react-bootstrap';
 import Context from '../context';
 
 function TodoFind() {
-    const styles = {
-        input: {
-            fontSize: '20px',
-            marginBottom: '20px',
-            padding: '7px'
-        }
-    }
-
     const { state, dispatch } = useContext(Context);
 
     function findHandler(e) {
@@ -23,13 +16,16 @@ function TodoFind() {
     }
 
     return (
-        <input
-            type="text"
-            value={state.findTodoValue}
-            onChange={(e) => findHandler(e)}
-            style={styles.input}
-            placeholder='Find task'
-        />
+        <Form>
+            <Form.Group>
+                <Form.Control
+                    type="text"
+                    placeholder='Find task'
+                    value={state.findTodoValue}
+                    onChange={(e) => findHandler(e)}
+                />
+            </Form.Group>
+        </Form>
     )
 }
 

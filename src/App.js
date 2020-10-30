@@ -5,11 +5,13 @@ import AddTodo from "./Todo/AddTodo";
 import Loader from "./Loader";
 // import Modal from './Modal/Modal';
 import Reducer from './Reducer';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import About from './About';
 import TodoItemDetails from './Todo/TodoItemDetails';
 import TodoFind from './Todo/TodoFind';
 import TodoFilter from './Todo/TodoFilter';
+import { Col, Container, Row } from 'react-bootstrap';
+import { TodoNavbar } from './Todo/TodoNavbar';
 
 function App() {
     const initialState = {
@@ -41,34 +43,40 @@ function App() {
 
     return (
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <ul className='navbar'>
-                <li>
-                    <NavLink exact to='/' className='nav-link'>Todo</NavLink>
-                </li>
-                <li>
-                    <NavLink exact to='/about' className='nav-link'>About</NavLink>
-                </li>
-            </ul>
-
+            <TodoNavbar />
             <Switch>
                 <Route exact path='/'>
                     <Context.Provider value={{ state, dispatch }}>
-                        <div className='wrapper'>
-                            <h1>Todo app</h1>
-                            {/* <Modal /> */}
-                            <TodoFilter />
-                            <TodoFind />
-                            <AddTodo />
-                            {
-                                state.loading && <Loader />
-                            }
-                            {
-                                state.filteredTodos.length ?
-                                    <TodoList todos={state.filteredTodos} />
-                                    :
-                                    state.loading ? '' : <h3>No todos found!</h3>
-                            }
-                        </div>
+                        <Container fluid='md' className='text-center'>
+                            <Row>
+                                <Col>
+                                    <TodoFilter />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <TodoFind />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <AddTodo />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    {
+                                        state.loading && <Loader />
+                                    }
+                                    {
+                                        state.filteredTodos.length ?
+                                            <TodoList todos={state.filteredTodos} />
+                                            :
+                                            state.loading ? '' : <h3>No todos found!</h3>
+                                    }
+                                </Col>
+                            </Row>
+                        </Container>
                     </Context.Provider>
                 </Route>
                 <Route exact path='/about'>

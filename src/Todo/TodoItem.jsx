@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types'
 import Context from '../context'
 import { useHistory } from 'react-router-dom';
+import { Button, ListGroup } from 'react-bootstrap';
 
 const styles = {
     li: {
@@ -36,7 +37,7 @@ function TodoItem({ todo, index }) {
     }
 
     function itemClickHandler(e) {
-        if (e.target.className === 'todo-item') {
+        if (e.target.classList.contains('todo-item')) {
             history.push('/' + todo.id);
         }
     }
@@ -46,8 +47,9 @@ function TodoItem({ todo, index }) {
     }
 
     return (
-        <li
+        <ListGroup.Item
             style={styles.li}
+            variant='secondary'
             className='todo-item'
             onClick={(e) => itemClickHandler(e)}
         >
@@ -60,12 +62,14 @@ function TodoItem({ todo, index }) {
                 <strong>{index + 1}.</strong>&nbsp;
                 {todo.title}
             </span>
-            <button
+            <Button
                 className='remove-btn'
-                onClick={() => dispatch({ type: 'REMOVE_TODO', payload: todo.id })}>
+                variant='danger'
+                onClick={() => dispatch({ type: 'REMOVE_TODO', payload: todo.id })}
+            >
                 &times;
-            </button>
-        </li>
+            </Button>
+        </ListGroup.Item>
     )
 }
 

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Form } from 'react-bootstrap';
 import Context from '../context';
 
 function TodoFilter() {
@@ -15,41 +16,38 @@ function TodoFilter() {
     }
 
     return (
-        <div className='todo-filter-wrap'>
-            <div className='todo-filter-el'>
-                <label htmlFor='todo-all'>All</label>
-                <input
-                    type="radio"
-                    value='all'
-                    name="todo-filter"
-                    id='todo-all'
-                    checked={state.filterValue === 'all'}
-                    onChange={(e) => filterClick(e)}
+        <Form className='todo-filter-wrap mb-3'>
+            <Form.Check
+                inline
+                label='All'
+                type='radio'
+                className='flex-column-reverse'
+                id='todo-all'
+                value='all'
+                checked={state.filterValue === 'all'}
+                onChange={(e) => filterClick(e)}
                 />
-            </div>
-            <div className='todo-filter-el'>
-                <label htmlFor='todo-current'>In progress</label>
-                <input
-                    type="radio"
-                    value='current'
-                    name="todo-filter"
-                    id='todo-current'
-                    checked={state.filterValue === 'current'}
-                    onChange={(e) => filterClick(e)}
+            <Form.Check
+                inline
+                label='In progress'
+                type='radio'
+                className='flex-column-reverse'
+                id="todo-current"
+                value='current'
+                checked={state.filterValue === 'current'}
+                onChange={(e) => filterClick(e)}
                 />
-            </div>
-            <div className='todo-filter-el'>
-                <label htmlFor='todo-done'>Done</label>
-                <input
-                    type="radio"
-                    value='done'
-                    name="todo-filter"
-                    id='todo-done'
-                    checked={state.filterValue === 'done'}
-                    onChange={(e) => filterClick(e)}
-                />
-            </div>
-        </div>
+            <Form.Check
+                inline
+                label='Done'
+                type='radio'
+                className='flex-column-reverse'
+                id='todo-done'
+                value='done'
+                checked={state.filterValue === 'done'}
+                onChange={(e) => filterClick(e)}
+            />
+        </Form>
     )
 }
 

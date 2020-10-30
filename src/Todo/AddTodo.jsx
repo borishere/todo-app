@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import Context from "../context";
 
 function useInputValue(state, dispatch) {
@@ -45,19 +46,23 @@ function AddTodo() {
     }
 
     return (
-        <form onSubmit={submitHandler}>
-            <input
-                type="text"
-                className='add-todo-input'
-                {...input.bind}
-            />
-            <button
-                type="submit"
-                className='add-todo-btn'
-            >
-                Add task
-            </button>
-        </form>
+        <Form onSubmit={submitHandler}>
+            <InputGroup className="mb-3">
+                <FormControl
+                    className='add-todo-input'
+                    {...input.bind}
+                />
+                <InputGroup.Append>
+                    <Button
+                    type='submit'
+                        variant='secondary'
+                        className='add-todo-btn'
+                    >
+                        Add Todo
+                    </Button>
+                </InputGroup.Append>
+            </InputGroup>
+        </Form>
     )
 }
 

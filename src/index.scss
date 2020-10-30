@@ -1,85 +1,25 @@
-body {
-  background-color: hsl(204, 33%, 25%);
-  color: hsl(0, 0%, 91%);
-  font-size: 22px;
-}
+@import "~bootstrap/scss/bootstrap";
 
-#root {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.wrapper {
-  width: 700px;
-  margin: 0 auto;
-  padding: 50px;
-}
-
-.remove-btn {
-  background-color: rgb(100, 149, 237);
-  font-size: 20px;
-  border-radius: 100px;
-}
-
-.done {
-  text-decoration: line-through;
-}
-
-.navbar {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  list-style: none;
-}
-
-.navbar li:not(:first-child) {
-  margin-left: 30px;
+.navbar-brand {
+    font-size: 23px;
 }
 
 .nav-link {
-  color: #fff;
+    font-size: 20px;
 }
 
-.nav-link.active {
-  color: rgb(40, 221, 109);
-}
-
-.add-todo-input {
-  width: 500px;
-  height: 20px;
-  font-size: 20px;
-  padding: 10px;
-}
-
-.add-todo-btn {
-  height: 44px;
-  padding: 0 10px;
-  font-size: 20px;
-  margin-left: 10px;
+.done {
+    text-decoration: line-through;
 }
 
 .todo-filter-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-
-.todo-filter-el {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.todo-filter-el:not(:first-child) {
-  margin-left: 30px;
-}
-
-.todo-filter-el input {
-  width: 17px;
-  height: 17px;
-  margin-top: 10px;
+    font-size: 20px;
+    .form-check:not(:first-child) {
+        margin-left: 30px;
+    }
+    .form-check-input {
+        width: 17px;
+        height: 17px;
+        margin-top: 10px;
+    }
 }
