@@ -23,3 +23,20 @@
         margin-top: 10px;
     }
 }
+
+.toast.show {
+    opacity: 0
+}
+
+.todo-alert {
+    transition: opacity 300ms;
+    &-enter {
+        opacity: 0;
+        &-active {
+            opacity: 1 !important;
+        }
+        &-done {
+            opacity: 1 !important;
+        }
+    }
+}

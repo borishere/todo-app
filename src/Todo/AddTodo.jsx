@@ -41,6 +41,11 @@ function AddTodo() {
                 type: 'FILTER_TODO'
             });
 
+            dispatch({
+                type: 'ADD_ALERT',
+                payload: 'add'
+            });
+
             input.clear()
         }
     }
@@ -54,7 +59,7 @@ function AddTodo() {
                 />
                 <InputGroup.Append>
                     <Button
-                    type='submit'
+                        type='submit'
                         variant='secondary'
                         className='add-todo-btn'
                     >

@@ -12,6 +12,7 @@ import TodoFind from './Todo/TodoFind';
 import TodoFilter from './Todo/TodoFilter';
 import { Col, Container, Row } from 'react-bootstrap';
 import { TodoNavbar } from './Todo/TodoNavbar';
+import { TodoAlertsList } from './Alert/TodoAlertsList';
 
 function App() {
     const initialState = {
@@ -21,9 +22,10 @@ function App() {
         modalOpened: false,
         addTodoValue: '',
         findTodoValue: '',
-        filterValue: 'all'
-
+        filterValue: 'all',
+        alerts: []
     }
+
     const [state, dispatch] = useReducer(Reducer, initialState);
 
     useEffect(() => {
@@ -48,6 +50,7 @@ function App() {
                 <Route exact path='/'>
                     <Context.Provider value={{ state, dispatch }}>
                         <Container fluid='md' className='text-center'>
+                            <TodoAlertsList />
                             <Row>
                                 <Col>
                                     <TodoFilter />

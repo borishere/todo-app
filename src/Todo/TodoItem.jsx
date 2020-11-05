@@ -46,6 +46,11 @@ function TodoItem({ todo, index }) {
         dispatch({ type: 'TOGGLE_TODO', payload: todo.id })
     }
 
+    function removeBtnHandler() {
+        dispatch({ type: 'REMOVE_TODO', payload: todo.id })
+        dispatch({ type: 'ADD_ALERT', payload: 'remove' })
+    }
+
     return (
         <ListGroup.Item
             style={styles.li}
@@ -65,7 +70,7 @@ function TodoItem({ todo, index }) {
             <Button
                 className='remove-btn'
                 variant='danger'
-                onClick={() => dispatch({ type: 'REMOVE_TODO', payload: todo.id })}
+                onClick={removeBtnHandler}
             >
                 &times;
             </Button>

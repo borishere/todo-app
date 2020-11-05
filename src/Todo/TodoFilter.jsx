@@ -26,7 +26,7 @@ function TodoFilter() {
                 value='all'
                 checked={state.filterValue === 'all'}
                 onChange={(e) => filterClick(e)}
-                />
+            />
             <Form.Check
                 inline
                 label='In progress'
@@ -36,7 +36,7 @@ function TodoFilter() {
                 value='current'
                 checked={state.filterValue === 'current'}
                 onChange={(e) => filterClick(e)}
-                />
+            />
             <Form.Check
                 inline
                 label='Done'

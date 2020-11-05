@@ -1,15 +1,15 @@
-const Reducer = (state, action) => {
-    switch (action.type) {
+const Reducer = (state, { type, payload }) => {
+    switch (type) {
         case 'SET_LOADING':
             return {
                 ...state,
-                loading: action.payload
+                loading: payload
             }
         case 'GET_TODOS':
             return {
                 ...state,
-                todos: action.payload,
-                filteredTodos: action.payload
+                todos: payload,
+                filteredTodos: payload
             }
         case 'ADD_TODO':
             return {
@@ -18,21 +18,21 @@ const Reducer = (state, action) => {
                     ...state.todos, {
                         id: Date.now(),
                         completed: false,
-                        title: action.payload
+                        title: payload
                     }
                 ]
             }
         case 'REMOVE_TODO':
             return {
                 ...state,
-                todos: state.todos.filter(item => item.id !== action.payload),
-                filteredTodos: state.filteredTodos.filter(item => item.id !== action.payload)
+                todos: state.todos.filter(item => item.id !== payload),
+                filteredTodos: state.filteredTodos.filter(item => item.id !== payload)
             }
         case 'TOGGLE_TODO':
             return {
                 ...state,
                 todos: state.todos.map(item => {
-                    if (item.id === action.payload) {
+                    if (item.id === payload) {
                         item.completed = !item.completed;
                     }
 
@@ -42,22 +42,22 @@ const Reducer = (state, action) => {
         case 'SET_MODAL':
             return {
                 ...state,
-                modalOpened: action.payload
+                modalOpened: payload
             }
         case 'SET_NEWTODO_VALUE':
             return {
                 ...state,
-                addTodoValue: action.payload
+                addTodoValue: payload
             }
         case 'SET_FIND_VALUE':
             return {
                 ...state,
-                findTodoValue: action.payload
+                findTodoValue: payload
             }
         case 'SET_FILTER_VALUE':
             return {
                 ...state,
-                filterValue: action.payload
+                filterValue: payload
             }
         case 'FILTER_TODO':
             return {
@@ -77,6 +77,22 @@ const Reducer = (state, action) => {
 
                     return item;
                 })
+            }
+        case 'ADD_ALERT':
+            return {
+                ...state,
+                alerts: [
+                    ...state.alerts,
+                    {
+                        id: Date.now(),
+                        type: payload
+                    }
+                ]
+            }
+        case 'REMOVE_ALERT':
+            return {
+                ...state,
+                alerts: state.alerts.filter(item => item.id !== payload)
             }
         default:
             break;
