@@ -48,7 +48,7 @@ function TodoItem({ todo, index }) {
 
     function removeBtnHandler() {
         dispatch({ type: 'REMOVE_TODO', payload: todo.id })
-        dispatch({ type: 'ADD_ALERT', payload: 'remove' })
+        dispatch({ type: 'SHOW_ALERT', payload: 'remove' })
     }
 
     return (

@@ -42,7 +42,7 @@ function AddTodo() {
             });
 
             dispatch({
-                type: 'ADD_ALERT',
+                type: 'SHOW_ALERT',
                 payload: 'add'
             });
 

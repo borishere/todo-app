@@ -78,7 +78,7 @@ const Reducer = (state, { type, payload }) => {
                     return item;
                 })
             }
-        case 'ADD_ALERT':
+        case 'SHOW_ALERT':
             return {
                 ...state,
                 alerts: [
