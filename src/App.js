@@ -1,18 +1,18 @@
 import React, { useEffect, useReducer } from 'react';
-import TodoList from './Todo/TodoList';
-import Context from './context';
-import AddTodo from "./Todo/AddTodo";
-import Loader from "./Loader";
+import TodoList from './components/TodoList';
+import Context from './state/context';
+import AddTodo from "./components/AddTodo";
+import Loader from "./components/Loader";
 // import Modal from './Modal/Modal';
-import Reducer from './Reducer';
+import Reducer from './state/Reducer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import About from './About';
-import TodoItemDetails from './Todo/TodoItemDetails';
-import TodoFind from './Todo/TodoFind';
-import TodoFilter from './Todo/TodoFilter';
+import About from './components/About';
+import TodoItemDetails from './components/TodoItemDetails';
+import TodoFind from './components/TodoFind';
+import TodoFilter from './components/TodoFilter';
 import { Col, Container, Row } from 'react-bootstrap';
-import { TodoNavbar } from './Todo/TodoNavbar';
-import { TodoAlertsList } from './Alert/TodoAlertsList';
+import { TodoNavbar } from './components/TodoNavbar';
+import { TodoAlertsList } from './components/TodoAlertsList';
 
 function App() {
     const initialState = {

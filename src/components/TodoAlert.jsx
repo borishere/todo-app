@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Toast } from 'react-bootstrap';
-import Context from '../context';
+import Context from '../state/context';
 
 export const TodoAlert = ({ id, index, type }) => {
     const { dispatch } = useContext(Context);

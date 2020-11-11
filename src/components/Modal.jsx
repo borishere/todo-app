@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Context from "../context";
+import Context from "../state/context";
 import "./Modal.css";
 
 function Modal() {

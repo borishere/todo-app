@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types'
-import Context from '../context'
+import Context from '../state/context'
 import { useHistory } from 'react-router-dom';
 import { Button, ListGroup } from 'react-bootstrap';
 

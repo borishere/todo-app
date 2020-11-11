@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import Context from '../context';
+import Context from '../state/context';
 import { TodoAlert } from './TodoAlert';
 
 export const TodoAlertsList = () => {

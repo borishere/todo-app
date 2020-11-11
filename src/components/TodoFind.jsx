@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Form } from 'react-bootstrap';
-import Context from '../context';
+import Context from '../state/context';
 
 function TodoFind() {
     const { state, dispatch } = useContext(Context);
