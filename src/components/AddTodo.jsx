@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import Context from "../state/context";
 
@@ -17,6 +17,7 @@ function useInputValue(state, dispatch) {
 function AddTodo() {
     const { state, dispatch } = useContext(Context);
     const input = useInputValue(state, dispatch);
+    const inputEl = useRef(null);
 
     function submitHandler(e) {
         e.preventDefault();
@@ -47,6 +48,8 @@ function AddTodo() {
             });
 
             input.clear()
+        } else {
+            inputEl.current.focus()
         }
     }
 
@@ -55,6 +58,7 @@ function AddTodo() {
             <InputGroup className="mb-3">
                 <FormControl
                     className='add-todo-input'
+                    ref={inputEl}
                     {...input.bind}
                 />
                 <InputGroup.Append>
