@@ -2,8 +2,9 @@ import React from 'react';
 import { useContext } from 'react';
 import { Toast } from 'react-bootstrap';
 import Context from '../state/context';
+import PropTypes from 'prop-types';
 
-export const TodoAlert = ({ id, index, type }) => {
+export const TodoAlert = ({ id, type }) => {
     const { dispatch } = useContext(Context);
 
     const closeAlert = () => {
@@ -40,4 +41,9 @@ export const TodoAlert = ({ id, index, type }) => {
             </Toast.Body>
         </Toast>
     )
+}
+
+TodoAlert.propTypes = {
+    id: PropTypes.number,
+    type: PropTypes.string
 }

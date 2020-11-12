@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Container, Jumbotron } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function TodoItemDetails({ todos }) {
     let { id } = useParams();
@@ -29,3 +30,7 @@ function TodoItemDetails({ todos }) {
 }
 
 export default TodoItemDetails;
+
+TodoItemDetails.propTypes = {
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired
+}

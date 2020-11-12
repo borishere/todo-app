@@ -24,7 +24,6 @@ export const TodoAlertsList = () => {
                         >
                             <TodoAlert
                                 id={toast.id}
-                                index={i}
                                 type={toast.type}
                             />
                         </CSSTransition>
