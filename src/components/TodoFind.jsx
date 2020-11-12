@@ -20,7 +20,7 @@ function TodoFind() {
             <Form.Group>
                 <Form.Control
                     type="text"
-                    placeholder='Find task'
+                    placeholder='Find todo'
                     value={state.findTodoValue}
                     onChange={(e) => findHandler(e)}
                 />

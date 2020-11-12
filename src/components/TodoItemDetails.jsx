@@ -15,7 +15,7 @@ function TodoItemDetails({ todos }) {
     return (
         <Container className='text-center'>
             <Jumbotron>
-                <h2>Task id: {id}</h2>
+                <h2>Todo id: {id}</h2>
                 <h3> {todo.title} </h3>
                 <Button
                     variant='primary'
