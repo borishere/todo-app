@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import TodoList from './components/TodoList';
 import Context from './state/context';
-import AddTodo from "./components/AddTodo";
-import Loader from "./components/Loader";
+import AddTodo from './components/AddTodo';
+import Loader from './components/Loader';
 // import Modal from './Modal/Modal';
 import Reducer from './state/Reducer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';

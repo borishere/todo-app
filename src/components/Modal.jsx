@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import Context from "../state/context";
-import "./Modal.css";
+import React, { useContext } from 'react';
+import Context from '../state/context';
+import './Modal.css';
 
 function Modal() {
     const { state, dispatch } = useContext(Context);

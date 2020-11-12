@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from "react";
-import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
-import Context from "../state/context";
+import React, { useContext, useRef } from 'react';
+import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
+import Context from '../state/context';
 
 function useInputValue(state, dispatch) {
     return {
