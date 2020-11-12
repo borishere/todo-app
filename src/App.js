@@ -13,6 +13,7 @@ import TodoFilter from './components/TodoFilter';
 import { Col, Container, Row } from 'react-bootstrap';
 import { TodoNavbar } from './components/TodoNavbar';
 import { TodoAlertsList } from './components/TodoAlertsList';
+import { getTodos } from './api/todos-api';
 
 function App() {
     const initialState = {
@@ -29,9 +30,8 @@ function App() {
     const [state, dispatch] = useReducer(Reducer, initialState);
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
-            .then(response => response.json())
-            .then(todos => setTimeout(() => {
+        getTodos().then(todos => {
+            setTimeout(() => {
                 dispatch({
                     type: 'GET_TODOS',
                     payload: todos
@@ -40,7 +40,8 @@ function App() {
                     type: 'SET_LOADING',
                     payload: false
                 });
-            }, 1000));
+            }, 1000)
+        });
     }, [])
 
     return (

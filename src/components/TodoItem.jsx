@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Context from '../state/context'
 import { useHistory } from 'react-router-dom';
 import { Button, ListGroup } from 'react-bootstrap';
+import { deleteTodo } from '../api/todos-api';
 
 const styles = {
     li: {
@@ -47,8 +48,12 @@ function TodoItem({ todo, index }) {
     }
 
     function removeBtnHandler() {
-        dispatch({ type: 'REMOVE_TODO', payload: todo.id })
-        dispatch({ type: 'SHOW_ALERT', payload: 'remove' })
+        deleteTodo(todo.id).then(ok => {
+            if (ok) {
+                dispatch({ type: 'REMOVE_TODO', payload: todo.id })
+                dispatch({ type: 'SHOW_ALERT', payload: 'remove' })
+            }
+        });
     }
 
     return (

@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
+import { addTodo } from '../api/todos-api';
 import Context from '../state/context';
 
 function useInputValue(state, dispatch) {
@@ -23,33 +24,44 @@ function AddTodo() {
         e.preventDefault();
 
         if (input.value().trim()) {
-            dispatch({
-                type: 'ADD_TODO',
-                payload: input.value()
+            let newTodo = {
+                id: Date.now(),
+                completed: false,
+                title: input.value()
+            };
+
+            addTodo(newTodo).then(ok => {
+                if (ok) {
+                    dispatch({
+                        type: 'ADD_TODO',
+                        payload: newTodo
+                    });
+
+                    dispatch({
+                        type: 'SET_FIND_VALUE',
+                        payload: ''
+                    });
+
+                    dispatch({
+                        type: 'SET_FILTER_VALUE',
+                        payload: 'all'
+                    });
+
+                    dispatch({
+                        type: 'FILTER_TODO'
+                    });
+
+                    dispatch({
+                        type: 'SHOW_ALERT',
+                        payload: 'add'
+                    });
+
+                }
             });
 
-            dispatch({
-                type: 'SET_FIND_VALUE',
-                payload: ''
-            });
-
-            dispatch({
-                type: 'SET_FILTER_VALUE',
-                payload: 'all'
-            });
-
-            dispatch({
-                type: 'FILTER_TODO'
-            });
-
-            dispatch({
-                type: 'SHOW_ALERT',
-                payload: 'add'
-            });
-
-            input.clear()
+            input.clear();
         } else {
-            inputEl.current.focus()
+            inputEl.current.focus();
         }
     }
 

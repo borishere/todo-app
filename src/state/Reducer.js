@@ -14,13 +14,7 @@ const Reducer = (state, { type, payload }) => {
         case 'ADD_TODO':
             return {
                 ...state,
-                todos: [
-                    ...state.todos, {
-                        id: Date.now(),
-                        completed: false,
-                        title: payload
-                    }
-                ]
+                todos: [...state.todos, { ...payload }]
             }
         case 'REMOVE_TODO':
             return {
