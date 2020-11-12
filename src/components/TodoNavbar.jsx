@@ -17,10 +17,10 @@ export const TodoNavbar = () => {
                 My Todo App
             </Navbar.Brand>
             <Nav className="mr-sm-2">
-                <NavLink exact to='/' className='nav-link text-secondary'>
+                <NavLink exact to='/' className='nav-link'>
                     Todo
             </NavLink>
-                <NavLink exact to='/about' className='nav-link text-secondary'>
+                <NavLink exact to='/about' className='nav-link'>
                     About
             </NavLink>
             </Nav>
