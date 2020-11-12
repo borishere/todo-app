@@ -29,7 +29,7 @@ function App() {
     const [state, dispatch] = useReducer(Reducer, initialState);
 
     useEffect(() => {
-        fetch('http://my-json-server.typicode.com/borishere/fake-server/todos')
+        fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
             .then(response => response.json())
             .then(todos => setTimeout(() => {
                 dispatch({
