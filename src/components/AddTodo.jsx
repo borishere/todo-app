@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
-import { addTodo } from '../api/todos-api';
+import api from '../api/todos-api';
 import Context from '../state/context';
 
 function useInputValue(state, dispatch) {
@@ -30,7 +30,7 @@ function AddTodo() {
                 title: input.value()
             };
 
-            addTodo(newTodo).then(ok => {
+            api.addTodo(newTodo).then(ok => {
                 if (ok) {
                     dispatch({
                         type: 'ADD_TODO',

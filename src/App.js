@@ -13,7 +13,7 @@ import TodoFilter from './components/TodoFilter';
 import { Col, Container, Row } from 'react-bootstrap';
 import { TodoNavbar } from './components/TodoNavbar';
 import { TodoAlertsList } from './components/TodoAlertsList';
-import { getTodos } from './api/todos-api';
+import api from './api/todos-api';
 
 function App() {
     const initialState = {
@@ -30,7 +30,7 @@ function App() {
     const [state, dispatch] = useReducer(Reducer, initialState);
 
     useEffect(() => {
-        getTodos().then(todos => {
+        api.getTodos().then(todos => {
             setTimeout(() => {
                 dispatch({
                     type: 'GET_TODOS',
