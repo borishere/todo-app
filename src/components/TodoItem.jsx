@@ -43,8 +43,17 @@ function TodoItem({ todo, index }) {
         }
     }
 
-    function inputChangeHandler() {
-        dispatch({ type: 'TOGGLE_TODO', payload: todo.id })
+    function toggleTodoHandler(todo) {
+        let toggledTodo = {
+            ...todo,
+            completed: !todo.completed
+        };
+
+        api.editTodo(toggledTodo).then(ok => {
+            if (ok) {
+                dispatch({ type: 'TOGGLE_TODO', payload: todo.id });
+            }
+        });
     }
 
     function removeBtnHandler() {
@@ -67,7 +76,7 @@ function TodoItem({ todo, index }) {
                 <input type='checkbox'
                     style={styles.input}
                     checked={todo.completed}
-                    onChange={inputChangeHandler}
+                    onChange={() => toggleTodoHandler(todo)}
                 />
                 <strong>{index + 1}.</strong>&nbsp;
                 {todo.title}

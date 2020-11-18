@@ -26,6 +26,18 @@ const api = {
         });
 
         return response.ok;
+    },
+
+    async editTodo(todo) {
+        let response = await fetch(`${API_ROOT}/${todo.id}`, {
+            method: 'PUT',
+            body: JSON.stringify(todo),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        });
+
+        return response.ok;
     }
 }
 
