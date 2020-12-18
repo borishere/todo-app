@@ -53,19 +53,13 @@ function App() {
                         <Container fluid='md' className='text-center'>
                             <TodoAlertsList />
                             <Row>
-                                <Col>
-                                    <TodoFilter />
-                                </Col>
+                                <Col><TodoFilter /></Col>
                             </Row>
                             <Row>
-                                <Col>
-                                    <TodoFind />
-                                </Col>
+                                <Col><TodoFind /></Col>
                             </Row>
                             <Row>
-                                <Col>
-                                    <AddTodo />
-                                </Col>
+                                <Col><AddTodo /></Col>
                             </Row>
                             <Row>
                                 <Col>
