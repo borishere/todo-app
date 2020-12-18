@@ -1,16 +1,16 @@
 import React, { useContext, useRef } from 'react';
 import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
 import api from '../api/todos-api';
+import { addTodo, filterTodo, setFilterValue, setFindValue, setNewTodoValue, showAlert } from '../state/actionCreators';
 import Context from '../state/context';
 
 function useInputValue(state, dispatch) {
     return {
         bind: {
             value: state.addTodoValue,
-            onChange: e => dispatch({ type: 'SET_NEWTODO_VALUE', payload: e.target.value })
-
+            onChange: e => dispatch(setNewTodoValue(e.target.value))
         },
-        clear: () => dispatch({ type: 'SET_NEWTODO_VALUE', payload: '' }),
+        clear: () => dispatch(setNewTodoValue('')),
         value: () => state.addTodoValue
     }
 }
@@ -32,30 +32,11 @@ function AddTodo() {
 
             api.addTodo(newTodo).then(ok => {
                 if (ok) {
-                    dispatch({
-                        type: 'ADD_TODO',
-                        payload: newTodo
-                    });
-
-                    dispatch({
-                        type: 'SET_FIND_VALUE',
-                        payload: ''
-                    });
-
-                    dispatch({
-                        type: 'SET_FILTER_VALUE',
-                        payload: 'all'
-                    });
-
-                    dispatch({
-                        type: 'FILTER_TODO'
-                    });
-
-                    dispatch({
-                        type: 'SHOW_ALERT',
-                        payload: 'add'
-                    });
-
+                    dispatch(addTodo(newTodo));
+                    dispatch(setFindValue(''));
+                    dispatch(setFilterValue('all'));
+                    dispatch(filterTodo());
+                    dispatch(showAlert('add'));
                 }
             });
 

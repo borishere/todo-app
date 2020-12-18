@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
 import { Form } from 'react-bootstrap';
+import { filterTodo, setFindValue } from '../state/actionCreators';
 import Context from '../state/context';
 
 function TodoFind() {
     const { state, dispatch } = useContext(Context);
 
     function findHandler(e) {
-        dispatch({
-            type: 'SET_FIND_VALUE',
-            payload: e.target.value
-        });
-        dispatch({
-            type: 'FILTER_TODO'
-        });
+        dispatch(setFindValue(e.target.value));
+        dispatch(filterTodo());
     }
 
     return (

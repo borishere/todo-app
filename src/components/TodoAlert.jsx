@@ -3,12 +3,13 @@ import { useContext } from 'react';
 import { Toast } from 'react-bootstrap';
 import Context from '../state/context';
 import PropTypes from 'prop-types';
+import { removeAlert } from '../state/actionCreators';
 
 export const TodoAlert = ({ id, type }) => {
     const { dispatch } = useContext(Context);
 
     const closeAlert = () => {
-        dispatch({ type: 'REMOVE_ALERT', payload: id })
+        dispatch(removeAlert(id))
     }
 
     let alertText;

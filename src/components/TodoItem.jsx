@@ -4,6 +4,7 @@ import Context from '../state/context'
 import { useHistory } from 'react-router-dom';
 import { Button, ListGroup } from 'react-bootstrap';
 import api from '../api/todos-api';
+import { removeTodo, showAlert, toggleTodo } from '../state/actionCreators';
 
 const styles = {
     li: {
@@ -51,7 +52,7 @@ function TodoItem({ todo, index }) {
 
         api.editTodo(toggledTodo).then(ok => {
             if (ok) {
-                dispatch({ type: 'TOGGLE_TODO', payload: todo.id });
+                dispatch(toggleTodo(todo.id));
             }
         });
     }
@@ -59,8 +60,8 @@ function TodoItem({ todo, index }) {
     function removeBtnHandler() {
         api.deleteTodo(todo.id).then(ok => {
             if (ok) {
-                dispatch({ type: 'REMOVE_TODO', payload: todo.id })
-                dispatch({ type: 'SHOW_ALERT', payload: 'remove' })
+                dispatch(removeTodo(todo.id))
+                dispatch(showAlert('remove'))
             }
         });
     }

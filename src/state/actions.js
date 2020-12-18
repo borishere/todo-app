@@ -1,0 +1,12 @@
+export const SET_LOADING = 'app/SET_LOADING';
+export const GET_TODOS = 'todos/GET_TODOS';
+export const ADD_TODO = 'todos/ADD_TODO';
+export const REMOVE_TODO = 'todos/REMOVE_TODO';
+export const TOGGLE_TODO = 'todos/TOGGLE_TODO';
+export const SET_MODAL = 'SET_MODAL';
+export const SET_NEWTODO_VALUE = 'form/SET_NEWTODO_VALUE';
+export const SET_FIND_VALUE = 'form/SET_FIND_VALUE';
+export const SET_FILTER_VALUE = 'form/SET_FILTER_VALUE';
+export const FILTER_TODO = 'todos/FILTER_TODO';
+export const SHOW_ALERT = 'alert/SHOW_ALERT';
+export const REMOVE_ALERT = 'alert/REMOVE_ALERT';

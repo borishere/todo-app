@@ -14,6 +14,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { TodoNavbar } from './components/TodoNavbar';
 import { TodoAlertsList } from './components/TodoAlertsList';
 import api from './api/todos-api';
+import { getTodos, setLoading } from './state/actionCreators';
 
 function App() {
     const initialState = {
@@ -32,14 +33,8 @@ function App() {
     useEffect(() => {
         api.getTodos().then(todos => {
             setTimeout(() => {
-                dispatch({
-                    type: 'GET_TODOS',
-                    payload: todos
-                });
-                dispatch({
-                    type: 'SET_LOADING',
-                    payload: false
-                });
+                dispatch(getTodos(todos));
+                dispatch(setLoading(false));
             }, 1000)
         });
     }, [])

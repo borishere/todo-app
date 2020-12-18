@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
 import { Form } from 'react-bootstrap';
+import { filterTodo, setFilterValue } from '../state/actionCreators';
 import Context from '../state/context';
 
 function TodoFilter() {
     const { state, dispatch } = useContext(Context);
 
     function filterClick(e) {
-        dispatch({
-            type: 'SET_FILTER_VALUE',
-            payload: e.target.value
-        });
-        dispatch({
-            type: 'FILTER_TODO'
-        });
+        dispatch(setFilterValue(e.target.value));
+        dispatch(filterTodo());
     }
 
     return (
