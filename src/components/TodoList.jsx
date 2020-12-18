@@ -20,7 +20,3 @@ TodoList.propTypes = {
 }
 
 export default TodoList
-
-TodoList.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.object).isRequired
-}
